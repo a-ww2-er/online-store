@@ -5,8 +5,8 @@ const AuthTabs = () => {
   const [activeTab, setActiveTab] = useState("login");
 
   return (
-    <div className="col-span-12 md:col-span-6 w-1/2 m-0">
-      <ul className="flex mb-4" role="tablist">
+    <div className="col-span-12 md:col-span-6 w-1/2 mx-auto">
+      <ul className="flex mb-4 mt-8 align-middle w-1/2" style={{ display: 'flex', justifyContent: 'center', width: '100%'}} role="tablist">
         <li
           role="presentation"
           className={`mr-4 ${
@@ -80,7 +80,7 @@ const AuthTabs = () => {
                 </button>
               </div>
               <p className="mt-4">
-                <a href="/my-account/lost-password/" className="text-blue-500">
+                <a href="#" className="text-blue-500">
                   Lost password?
                 </a>
               </p>
