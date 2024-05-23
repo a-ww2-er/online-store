@@ -1,23 +1,24 @@
 import React from "react";
 import Image from "next/image";
-import {
-  CloudLightningIcon,
-  SquareGanttChartIcon,
-  ShoppingCart,
-  TagIcon,
-  PersonStanding,
-  BarChart,
-  PinIcon,
-  CurrencyIcon,
-  StoreIcon,
-  ShoppingBagIcon,
-} from "lucide-react";
-
+// import {
+//   CloudLightningIcon,
+//   SquareGanttChartIcon,
+//   ShoppingCart,
+//   TagIcon,
+//   PersonStanding,
+//   BarChart,
+//   PinIcon,
+//   CurrencyIcon,
+//   StoreIcon,
+//   ShoppingBagIcon,
+// } from "lucide-react";
+import Sidebar from "@/components/Admin/SideBar";
+import Header from "@/components/Admin/Header"
 const AdminHome = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-lightGray shadow-md px-5 h-full">
+      {/* <aside className="w-64 bg-lightGray shadow-md px-5 h-full">
         <section id="logo" className="mt-10">
           <h2 className="capitalize font-bold text-[1.5rem] flex gap-2 items-center">
             <CloudLightningIcon className="text-blue-500 h-12 w-12" />
@@ -55,12 +56,13 @@ const AdminHome = () => {
             </li>
           </ul>
         </nav>
-      </aside>
+      </aside> */}
+      <Sidebar/>
 
       {/* Main Content */}
       <main className="flex-1 p-6">
         {/* Header */}
-        <header className="flex justify-between items-center mb-8">
+        {/* <header className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-2xl font-bold">Good Morning, Jonathan!</h1>
             <p>{"Here's what's happening with your store today"}</p>
@@ -80,10 +82,11 @@ const AdminHome = () => {
               decoding="async"
               width="244"
               height="150"
-              className="w-36 h-auto"
+              // className="w-36 h-auto"
             />
           </div>
-        </header>
+        </header> */}
+        <Header/>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
@@ -114,10 +117,12 @@ const AdminHome = () => {
         </div>
 
         {/* Sales Report */}
-        <div className="bg-white p-6 rounded-lg shadow mb-8">
-          <h2 className="text-xl font-semibold mb-4">Your sales report</h2>
-          <p className="text-4xl font-bold">$4,435.70</p>
-          <p className="text-green-500">+2,330.00 (+2.5%)</p>
+        <div className="bg-white p-6 rounded-lg shadow mb-8 flex justify-between">
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Your sales report</h2>
+            <p className="text-4xl font-bold">$4,435.70</p>
+            <p className="text-green-500">+2,330.00 (+2.5%)</p>
+          </div>
           {/* Sales chart placeholder */}
           <div className="mt-4">
             <Image
@@ -133,7 +138,7 @@ const AdminHome = () => {
 
         {/* Last Transactions */}
         <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-4">Last transaction</h2>
+          <h2 className="text-xl font-semibold mb-4">Last transactions</h2>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">

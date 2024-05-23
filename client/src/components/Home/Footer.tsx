@@ -22,12 +22,11 @@ const Footer = (props: Props) => {
               <span className="text-blue-400">01916-730943, 01761-403785</span>
             </p>
             <p>
-              <i className="linear-icon-map-marker"></i> Address: 233,
-              Fatiamari, Sherpur
+              <i className="linear-icon-map-marker"></i> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda ducimus in.
             </p>
             <p>
               <i className="linear-icon-envelope"></i> Email:{" "}
-              <span className="text-blue-400">info@d5digital.net</span>
+              <span className="text-blue-400">info@onefaster.net</span>
             </p>
             <div className="flex space-x-4 mt-4">
               <a
@@ -138,7 +137,7 @@ const Footer = (props: Props) => {
             <ul>
               <li>
                 <a
-                  href="https://d5digital.net/frequently-asked-questions/"
+                  href="#"
                   className="text-gray-400 hover:text-white"
                 >
                   FAQs
@@ -146,7 +145,7 @@ const Footer = (props: Props) => {
               </li>
               <li>
                 <a
-                  href="https://d5digital.net/refund_returns/"
+                  href="#"
                   className="text-gray-400 hover:text-white"
                 >
                   Refund and Returns Policy
@@ -154,7 +153,7 @@ const Footer = (props: Props) => {
               </li>
               <li>
                 <a
-                  href="https://d5digital.net/terms-and-conditions/"
+                  href="#"
                   className="text-gray-400 hover:text-white"
                 >
                   Terms & Conditions
@@ -162,7 +161,7 @@ const Footer = (props: Props) => {
               </li>
               <li>
                 <a
-                  href="https://d5digital.net/privacy-policy/"
+                  href="#"
                   className="text-gray-400 hover:text-white"
                 >
                   Privacy Policy
@@ -170,7 +169,7 @@ const Footer = (props: Props) => {
               </li>
               <li>
                 <a
-                  href="https://d5digital.net/order-cancelation-policy/"
+                  href="#"
                   className="text-gray-400 hover:text-white"
                 >
                   Order Cancellation Policy
@@ -178,7 +177,7 @@ const Footer = (props: Props) => {
               </li>
               <li>
                 <a
-                  href="https://d5digital.net/about-us/"
+                  href="#"
                   className="text-gray-400 hover:text-white"
                 >
                   About us
@@ -186,7 +185,7 @@ const Footer = (props: Props) => {
               </li>
               <li>
                 <a
-                  href="https://d5digital.net/contact-us/"
+                  href="#"
                   className="text-gray-400 hover:text-white"
                 >
                   Contact Us
@@ -203,7 +202,7 @@ const Footer = (props: Props) => {
               height={50}
             />
             <h3 className="font-semibold mt-6 mb-4">SECURED BY</h3>
-            <a href="https://d5digital.net/about-us/">
+            <a href="#">
               <Image
                 src="/secured-footer-d5digital-v3.webp"
                 alt="Secured by"
@@ -216,8 +215,8 @@ const Footer = (props: Props) => {
         <div className="text-center mt-10">
           <p className="text-gray-400">
             © 2024{" "}
-            <a href="https://d5digital.net/" className="text-yellow-400">
-              D5digital
+            <a href="/" className="text-yellow-400">
+              One Faster
             </a>
             .net All rights reserved | Powered by{" "}
             <a
@@ -226,7 +225,7 @@ const Footer = (props: Props) => {
               rel="noopener noreferrer"
               className="text-yellow-400"
             >
-              rshagor.com
+              onefaster.com
             </a>
           </p>
         </div>
