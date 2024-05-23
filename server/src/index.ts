@@ -1,9 +1,18 @@
-import express,{Express,Request,Response} from 'express'
+import { PrismaClient } from "@prisma/client"
+import { app } from "./server"
+import dotenv from 'dotenv'
 
-const app:Express = express()
+dotenv.config()
 
-app.get("/",(req:Request,res:Response)=>{
-    res.send('working')
+const port = process.env.PORT || 5000
+
+
+export const prismaClient = new PrismaClient({
+    log:["query"]
 })
 
-app.listen(3000,()=> console.log('App working'))
+
+app.listen(port,()=> {
+    console.log(`Server running on port ${port}`)
+//connect db
+})
