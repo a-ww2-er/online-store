@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import img5 from "../../../public/img5.jpg";
 import img4 from "../../../public/img4.png";
-import img6 from "../../../public/img6.jpg";
+import img6 from "../../../public/img3.png";
 import { DropdownMenuSeparator } from "../ui/dropdown-menu";
 import { IoCart, IoCartOutline, IoCartSharp } from "react-icons/io5";
 
@@ -17,7 +17,7 @@ const Cards = (props: Props) => {
     <div className="flex flex-col min-h-[360px] rounded-md border border-slate-400 shadow-sm ">
       <section id="product_image" className="">
         <Image
-          src={props.img == 4 ? img4 : props.img == 6 ? "public/img6.jpg" : img5}
+          src={props.img == 4 ? img4 : props.img == 6 ? img6 : img5}
           alt="image"
           className="h-[270px] object-fit w-[270px]"
           width={270}
