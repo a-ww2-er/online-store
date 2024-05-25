@@ -66,6 +66,62 @@ const Banners = (props: Props) => {
                 alt="McAfee"
               />
             </a>
+            <a
+              href="https://d5digital.net/product/autodesk-all-apps-subscription-price-in-bd/"
+              className="block"
+            >
+              <Image
+                loading="lazy"
+                decoding="async"
+                width="244"
+                height="150"
+                src="/autodesk.jpg"
+                className="w-36 h-auto"
+                alt="Autodesk"
+              />
+            </a>
+            <a
+              href="https://d5digital.net/product/winrar-lifetime-license-key-price-in-bd/"
+              className="block"
+            >
+              <Image
+                loading="lazy"
+                decoding="async"
+                width="244"
+                height="150"
+                src="/winrar.png"
+                className="w-36 h-auto"
+                alt="WinRAR"
+              />
+            </a>
+            <a
+              href="https://d5digital.net/product/ip-vanish-vpn-subscription-price-in-bd/"
+              className="block"
+            >
+              <Image
+                loading="lazy"
+                decoding="async"
+                width="244"
+                height="150"
+                src="/ipvanish.png"
+                className="w-36 h-auto"
+                alt="IPVanish"
+              />
+            </a>
+            <a
+              href="https://d5digital.net/product-category/all-products/software/antivirus/"
+              className="block"
+            >
+              <Image
+                loading="lazy"
+                decoding="async"
+                width="244"
+                height="150"
+                src="/mcafee.png"
+                className="w-36 h-auto"
+                alt="McAfee"
+              />
+            </a>
           </div>
         </div>
       </div>

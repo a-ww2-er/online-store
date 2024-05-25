@@ -1,6 +1,5 @@
 "use client";
 import { Checkbox } from "@/components/ui/checkbox";
-
 import { Label } from "@/components/ui/label";
 import React, { useEffect, useState } from "react";
 import {
@@ -9,19 +8,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-// import { categoryProps } from "@/app/interface";
 import Link from "next/link";
-
 import { usePathname, useRouter } from "next/navigation";
 // import { useDispatch } from "react-redux";
-// import { filterData } from "@/redux/features/filterSlice";
-// import {
-//   getStyles,
-//   getColors,
-//   getSizes,
-//   getCategory,
-//   getTypes,
-// } from "@/components/ApiRequests/ApiRequests";
 import { Input } from "@/components/ui/input";
 import { Check, CheckIcon } from "lucide-react";
 import { IoFilterOutline } from "react-icons/io5";
@@ -36,31 +25,21 @@ interface props {
 
 export default function ShopFilterNav({ category }: props) {
   // const dispatch = useDispatch();
-  const pathname = usePathname();
-  const router = useRouter();
+  // const pathname = usePathname();
+  // const router = useRouter();
   const [show, setShow] = useState(false);
   const [allTypes, setAllTypes] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedSize, setSelectedSize] = useState<string[]>([]);
-  const [selectedStyle, setSelectedStyle] = useState<string[]>([]);
-  const [selectedColor, setSelectedColor] = useState<string[]>([]);
+  const [selectedcompany, setSelectedcompany] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<priceRange[]>([]);
-  const [allcategories, setAllCategories] = useState<{categoryname:string}[]>([]);
-  const [allColors, setAllColors] = useState<string[]>([]);
-  const [allStyles, setAllStyles] = useState<string[]>([]);
-  const [allSizes, setAllSizes] = useState<string[]>([]);
- 
-  
+  const [allcategories, setAllCategories] = useState<
+    { categoryname: string }[]
+  >([]);
+  const [allcompanys, setAllcompanys] = useState<string[]>([]);
+
   const toggleSidebar = () => {
     setShow(!show);
-  };
-  const handleSelectSize = (size: string) => {
-    setSelectedSize((prevSize: string[]) =>
-      prevSize.includes(size)
-        ? prevSize.filter((c) => c !== size)
-        : [...prevSize, size]
-    );
   };
 
   const handleSelectedPrice = (price: priceRange) => {
@@ -74,21 +53,6 @@ export default function ShopFilterNav({ category }: props) {
         : [...prevPrices, price]
     );
   };
-  const handleSelectColor = (color: string) => {
-    setSelectedColor((prevColor: string[]) =>
-      prevColor.includes(color)
-        ? prevColor.filter((c) => c !== color)
-        : [...prevColor, color]
-    );
-  };
-
-  const handleSelectedStyle = (style: string) => {
-    setSelectedStyle((prevStyle: string[]) =>
-      prevStyle.includes(style)
-        ? prevStyle.filter((c) => c !== style)
-        : [...prevStyle, style]
-    );
-  };
 
   const handleSelectedCategory = (category: string) => {
     setSelectedCategories((prevCategories: string[]) =>
@@ -99,61 +63,12 @@ export default function ShopFilterNav({ category }: props) {
   };
 
   const handleSelectedTypes = (type: string) => {
-    setSelectedTypes((prevTypes: string[] ) =>
+    setSelectedTypes((prevTypes: string[]) =>
       prevTypes?.includes(type)
         ? prevTypes.filter((typ) => typ !== type)
         : [...prevTypes, type]
     );
   };
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const fetchedCategories = await getCategory();
-  //       setAllCategories(fetchedCategories);
-  //       //move this to fetch function to anothe rpage and call it here pls
-  //       const fetchedStyles: string[] = await getStyles();
-  //       setAllStyles(fetchedStyles);
-  //       const fetchedColors: string[] = await getColors();
-  //       setAllColors(fetchedColors);
-  //       const fetchedSizes: string[] = await getSizes() ;
-  //       setAllSizes(fetchedSizes);
-  //       const fetchedTypes: string[] = await getTypes();
-  //       setAllTypes(fetchedTypes);
-  //     } catch (error) {
-  //       console.error("Error fetching categories:", error);
-  //     }
-  //   }
-
-  //   fetchData();
-  // }, []);
-  // useEffect(() => {
-  //   axios
-  //     .post("/api/filterproduct", {
-  //       categories: selectedCategories,
-  //       type: selectedTypes,
-  //       size: selectedSize,
-  //       price: selectedPrice,
-  //       colors: selectedColor,
-  //       styles: selectedStyle,
-  //     })
-  //     .then((response) => {
-  //       dispatch(filterData(response.data));
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error", error);
-  //     });
-  // }, [
-  //   selectedCategories,
-  //   selectedTypes,
-  //   selectedColor,
-  //   selectedPrice,
-  //   // selectedPrice,
-  //   selectedSize,
-  //   selectedStyle,
-  // ]);
-
-  // console.log(isMans, isWomans, isUnisex, selectedSize, selectedColor);
 
   return (
     <>
@@ -162,23 +77,23 @@ export default function ShopFilterNav({ category }: props) {
           <div className="">
             <div className="">
               <p className=" text-2xl font-semibold flex items-center text-gray-800  mb-4">
-               <IoFilterOutline className="mr-2"/> Filter
+                <IoFilterOutline className="mr-2" /> Filter
               </p>
               <div className=" flex gap-4 flex-wrap gap-y-">
-                {/* Sizes buttons */}
-                {allTypes?.map((sizeOption) => (
+                {/* types buttons */}
+                {allTypes?.map((typeOption) => (
                   <div
-                    key={sizeOption}
+                    key={typeOption}
                     className={`border border-dedrock-blue rounded-md px-3 py-1.5 items-center justify-center cursor-pointer
                             ${
-                              selectedTypes?.includes(sizeOption)
+                              selectedTypes?.includes(typeOption)
                                 ? "bg-black text-white"
                                 : "bg-white text-black"
                             }
                         `}
-                    onClick={() => handleSelectedTypes(sizeOption)}
+                    onClick={() => handleSelectedTypes(typeOption)}
                   >
-                    {sizeOption}
+                    {typeOption}
                   </div>
                 ))}
               </div>
@@ -198,7 +113,7 @@ export default function ShopFilterNav({ category }: props) {
                   </Checkbox>
                 </Checkbox>
                 <Label htmlFor="short description" className="pr-1">
-                   $100 To  $500
+                  $100 To $500
                 </Label>
               </div>
 
@@ -213,7 +128,7 @@ export default function ShopFilterNav({ category }: props) {
                   </Checkbox>
                 </Checkbox>
                 <Label htmlFor="short description" className="pr-1">
-                   $500 To  $1599
+                  $500 To $1599
                 </Label>
               </div>
 
@@ -228,7 +143,7 @@ export default function ShopFilterNav({ category }: props) {
                   </Checkbox>
                 </Checkbox>
                 <Label htmlFor="short description" className="pr-1">
-                   $1599 To  $2599
+                  $1599 To $2599
                 </Label>
               </div>
 
@@ -243,7 +158,7 @@ export default function ShopFilterNav({ category }: props) {
                   </Checkbox>
                 </Checkbox>
                 <Label htmlFor="short description" className="pr-1">
-                   $2599 To  $3799
+                  $2599 To $3799
                 </Label>
               </div>
               <div className="flex items-center space-x-1">
@@ -257,7 +172,7 @@ export default function ShopFilterNav({ category }: props) {
                   </Checkbox>
                 </Checkbox>
                 <Label htmlFor="short description" className="pr-1">
-                   $3599 To  $6899
+                  $3599 To $6899
                 </Label>
               </div>
             </div>
@@ -277,7 +192,9 @@ export default function ShopFilterNav({ category }: props) {
                           <div
                             key={index}
                             className={`cursor-pointer ${
-                              selectedCategories.includes(category?.categoryname)
+                              selectedCategories.includes(
+                                category?.categoryname
+                              )
                                 ? "underline"
                                 : ""
                             }`}
@@ -291,44 +208,44 @@ export default function ShopFilterNav({ category }: props) {
                           </div>
                         ))
                       ) : (
-                        <p>No Styles</p>
+                        <p>No companys</p>
                       )}
                     </div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2" className=" mb-8">
                   <AccordionTrigger>
-                    <div className=" text-lg font-medium">Styles</div>{" "}
+                    <div className=" text-lg font-medium">Companies</div>{" "}
                   </AccordionTrigger>
                   <Input
                     onChange={(e) => {
-                      const styleArray = e.target.value.split(",");
-                      setSelectedStyle(styleArray);
+                      const companyArray = e.target.value.split(",");
+                      setSelectedcompany(companyArray);
                     }}
                     // value={""}
                     type="text"
-                    name="styles"
-                    id="styles"
-                    placeholder="Search Styles"
+                    name="companys"
+                    id="companys"
+                    placeholder="Search Companies"
                   />
                   <AccordionContent>
                     <div className="gap-5 mt-3 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
-                      {allStyles?.length > 0 ? (
-                        allStyles?.map((style, index) => (
+                      {allcompanys?.length > 0 ? (
+                        allcompanys?.map((company, index) => (
                           <span
                             key={index}
                             className={`py-3 flex rounded-lg border capitalize items-center text-center text-dedrock-blue justify-center cursor-pointer ${
-                              selectedStyle.includes(style)
+                              selectedcompany.includes(company)
                                 ? "bg-dedrock-blue text-white"
                                 : ""
                             }`}
-                            onClick={() => handleSelectedStyle(style)}
+                            // onClick={() => }
                           >
-                            {style}
+                            {company}
                           </span>
                         ))
                       ) : (
-                        <p>No Styles</p>
+                        <p>No companys</p>
                       )}
                     </div>
                   </AccordionContent>
@@ -336,55 +253,8 @@ export default function ShopFilterNav({ category }: props) {
               </Accordion>
             </div>
             {/* <hr className="my-7" /> */}
-            <div className="mt-7">
-              <p className=" text-lg font-medium text-gray-800">Size</p>
-              <div className="">
-                <div className="mt-3 flex gap-7 grid grid-cols-3 gap-y-4">
-                  {/* Sizes buttons */}
-                  {allSizes.map((sizeOption) => (
-                    <div
-                      key={sizeOption}
-                      className={`border border-dedrock-blue rounded-md w-14 h-8 flex items-center justify-center text-sm cursor-pointer
-                            ${
-                              selectedSize.includes(sizeOption)
-                                ? "bg-black text-white"
-                                : "bg-white text-black"
-                            }
-                        `}
-                      onClick={() => handleSelectSize(sizeOption)}
-                    >
-                      {sizeOption}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+
             <hr className="my-7" />
-            <div className="">
-              <p className=" text-lg font-medium text-gray-800">Color</p>
-              <div className="">
-                <div className="mt-3 flex gap-7 grid grid-cols-4 gap-y-2">
-                  {/* Color boxes */}
-                  {allColors.map((c: string) => (
-                    <div
-                      key={c}
-                      className={`w-9 h-9 rounded-full cursor-pointer ${
-                        selectedColor.includes(c)
-                          ? " border-2 border-black"
-                          : "border-2 border-white"
-                      }`}
-                      style={{
-                        borderRadius: "100%",
-                        backgroundColor: c,
-                        display: "inline-block",
-                        margin: "1px",
-                      }}
-                      onClick={() => handleSelectColor(c)}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -436,7 +306,7 @@ export default function ShopFilterNav({ category }: props) {
                     htmlFor="terms"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 pl-2 "
                   >
-                    All For Mans
+                    OS license
                   </label>
                 </div>
                 <div className="flex items-center my-3">
@@ -445,7 +315,7 @@ export default function ShopFilterNav({ category }: props) {
                     htmlFor="terms"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 pl-2 "
                   >
-                    All For Womans
+                    Graphic Software
                   </label>
                 </div>
                 <div className="flex items-center my-3">
@@ -454,7 +324,7 @@ export default function ShopFilterNav({ category }: props) {
                     htmlFor="terms"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 pl-2 "
                   >
-                    All For Unisex
+                    Antivirus
                   </label>
                 </div>
               </div>
@@ -469,25 +339,7 @@ export default function ShopFilterNav({ category }: props) {
                     htmlFor="terms"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 pl-2 "
                   >
-                    All For Mans All For Mans
-                  </label>
-                </div>
-                <div className="flex items-center my-3">
-                  <Checkbox id="terms" />
-                  <label
-                    htmlFor="terms"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 pl-2 "
-                  >
-                    All For Womans
-                  </label>
-                </div>
-                <div className="flex items-center my-3">
-                  <Checkbox id="terms" />
-                  <label
-                    htmlFor="terms"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 pl-2 "
-                  >
-                    All For Unisex
+                    VPN
                   </label>
                 </div>
               </div>
@@ -524,7 +376,7 @@ export default function ShopFilterNav({ category }: props) {
                             </div>
                           ))
                         ) : (
-                          <p>No Styles</p>
+                          <p>No companys</p>
                         )}
                       </div>
                     </AccordionContent>
@@ -532,55 +384,6 @@ export default function ShopFilterNav({ category }: props) {
                 </Accordion>
               </div>
               {/* <hr className="my-7" /> */}
-              <div className="mt-7">
-                <p className=" text-lg font-semibold text-gray-800">Size</p>
-                <div className="">
-                  <div className="mt-3 flex gap-7 grid grid-cols-3 gap-y-4">
-                    {/* Sizes buttons */}
-                    {allSizes.map((sizeOption: string) => (
-                      <div
-                        key={sizeOption}
-                        className={`border border-dedrock-blue rounded-md w-14 h-8 flex items-center justify-center text-sm cursor-pointer
-                            ${
-                              selectedSize.includes(sizeOption)
-                                ? "bg-black text-white"
-                                : "bg-white text-black"
-                            }
-                        `}
-                        onClick={() => handleSelectSize(sizeOption)}
-                      >
-                        {sizeOption}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <hr className="my-7" />
-              <div className="">
-                <p className=" text-lg font-semibold text-gray-800">Color</p>
-                <div className="">
-                  <div className="mt-3 flex gap-7 grid grid-cols-4 gap-y-2">
-                    {/* Color boxes */}
-                    {allColors.map((c: string) => (
-                      <div
-                        key={c}
-                        className={`w-9 h-9 rounded-full cursor-pointer ${
-                          selectedColor.includes(c)
-                            ? " border-2 border-black"
-                            : "border-2 border-white"
-                        }`}
-                        style={{
-                          borderRadius: "100%",
-                          backgroundColor: c,
-                          display: "inline-block",
-                          margin: "1px",
-                        }}
-                        onClick={() => handleSelectColor(c)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

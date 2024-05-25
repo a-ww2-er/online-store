@@ -14,13 +14,13 @@ type Props = {
 
 const Cards = (props: Props) => {
   return (
-    <div className="flex flex-col min-h-[400px] rounded-md border border-slate-400 shadow-sm ">
+    <div className="flex flex-col min-h-[360px] rounded-md border border-slate-400 shadow-sm ">
       <section id="product_image" className="">
         <Image
           src={props.img == 4 ? img4 : props.img == 6 ? img6 : img5}
           alt="image"
-          className="h-[300px] object-fit w-[300px]"
-          width={300}
+          className="h-[270px] object-fit w-[270px]"
+          width={270}
         />
       </section>
       <section id="product_details" className="p-4  pt-7 flex flex-col h-full justify-between ">
