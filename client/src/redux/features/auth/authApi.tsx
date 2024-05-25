@@ -76,7 +76,7 @@ export const authApi = apiSlice.injectEndpoints({
                 url:"oauth",
                 method:"POST",
                 body:{
-                    email, username, profilePhoto,account
+                    email, username, profilePhoto
                 },
                 credentials:"include",
             }),
