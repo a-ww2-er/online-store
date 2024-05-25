@@ -1,18 +1,27 @@
-import { PrismaClient } from "@prisma/client"
-import { app } from "./server"
-import dotenv from 'dotenv'
+import { PrismaClient } from "@prisma/client";
+import app from "./server";
+import dotenv from "dotenv";
+import { PORT } from "./variables";
+import { registerSchema } from "./schema/users";
 
-dotenv.config()
+//SERVER INITIALIZATION FILE
 
-const port = process.env.PORT || 5000
-
-
+//DATABASE INITIALIZATION
 export const prismaClient = new PrismaClient({
-    log:["query"]
-})
+  log: ["query"],
+}).$extends({
+  query: {
+    //WHEN CREATING USER VALIDATE INPUTS WITH REGISTER SCHEMA
+    user: {
+      create({ args, query }) {
+        args.data = registerSchema.parse(args.data);
+        return query(args);
+      },
+    },
+  },
+});
 
-
-app.listen(port,()=> {
-    console.log(`Server running on port ${port}`)
-//connect db
-})
+app.listen(PORT, () => {
+  console.log(`Server running on PORT ${PORT}`);
+  //connect db
+});
