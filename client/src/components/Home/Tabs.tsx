@@ -1,20 +1,56 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 type Props = {};
 
-const Tabs = (props: Props) => {
-  return (
-    <div className="py-2 px-16  bg-gray-400">
-      <ul className="flex justify-between  text-[1.02rem]">
-        <li className="cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize">Home</li>
-        <li className="cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize"><Link href={"/shop"}>Shop</Link></li>
-        <li className="cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize">Windows</li>
-        <li className="cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize">Antivirus</li>
-        <li className="cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize">Autodesk</li>
-        <li className="cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize">Apple Softwares</li>
-        <li className="cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize">Microsoft</li>
+const tabLinks = [
+  {
+    tab:"Home",
+    href:"/"
+  },
+  {
+    tab:"Store",
+    href:"/store"
+  },
+  {
+    tab:"Windows",
+    href:"/store/products/windows"
+  },
+  {
+    tab:"Antivirus",
+    href:"/store/products/antivirus"
+  },
+  {
+    tab:"Autodesk",
+    href:"/store/products/autodesk"
+  },
+  {
+    tab:"Apple Softwares",
+    href:"/store/products/apple-softwares"
+  },
+  {
+    tab:"Microsoft",
+    href:"/store/products/microsoft"
+  },
+];
 
+const Tabs = (props: Props) => {
+  const pathname = usePathname();
+  //bg color bg-[#3b4863]
+  return (
+    <div className="py-2 px-16  ">
+      <ul className="flex justify-between  text-[1.02rem]">
+        {
+          tabLinks.map((link,index)=>{
+            return <Link key={index} href={link.href} className={`flex flex-col items-center cursor-pointer hover:text-gray-600 transition-all duration-100 capitalize
+            ${pathname === link.href ? " font-semibold" : ""}
+            `}>{link.tab}
+            {pathname === link.href ? <span className="h-[2px] w-[40%]  bg-white rounded-md"></span> : ""}
+          </Link>
+          })
+        }
       </ul>
     </div>
   );

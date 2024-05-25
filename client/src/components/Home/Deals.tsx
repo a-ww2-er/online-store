@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import img2 from "../../../public/img2.png";
+import {BsLightningCharge } from "react-icons/bs"
 
 type Props = {};
 
@@ -10,7 +11,7 @@ const Deals = (props: Props) => {
   return (
     <div className="grid grid-cols-2 text-black mt-8 py-8 px-16 items-center gap-x-12 ">
       <section id="left_deal_writeup" className="">
-        <h2 className="font-semibold text-[1.3rem] mb-4"> Live Offers</h2>
+        <h2 className="font-semibold text-[1.3rem] mb-4 flex items-center"> Flash sales <BsLightningCharge className="ml-1 h-6 w-6 text-yellow-500"/></h2>
         <p className="font-light text-[0.8rem]">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam
           perspiciatis magni adipisci mollitia provident. Veniam fuga aspernatur

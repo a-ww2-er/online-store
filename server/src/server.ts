@@ -1,27 +1,31 @@
 import cors from 'cors';
 import express,{Express,Request,Response} from 'express'
+import { errorHandler } from './middlewares/errors';
 import rootRouter from './routes'
+import { CORS_ORIGIN } from './variables';
 
+//EXPRESS SERVER SETUP
 
 const app: Express = express();
 
-// Set the application to trust the reverse proxy
+// SET THE APPLICATION TO TRUST THE REVERSE PROXY
 app.set('trust proxy', true);
 
-// Middlewares
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
-app.use(express.json)
+// MIDDLEWARES
+app.use(cors({ origin: CORS_ORIGIN, credentials: true }));
+app.use(express.json())
 
-// Routes
-
+// ROUTES
 app.use('/api',rootRouter)
-
 app.get("/",(req:Request,res:Response)=>{
-    res.send('working')
+    res.status(200).json({
+        success:true,
+        message:"Server is running"
+    })
 })
 
 
-// Error handlers
-//app.use(errorHandler());
+// ERROR HANDLERS
+ app.use(errorHandler);
 
-export { app };
+export default app
