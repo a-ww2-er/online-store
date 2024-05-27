@@ -1,15 +1,11 @@
 import React from "react";
-import Image from "next/image";
 import { BoxIcon, BookCheck, MedalIcon } from "lucide-react";
-import Sidebar from "@/components/Admin/SideBar";
 import Header from "@/components/Admin/Header";
 import { FcCancel } from "react-icons/fc";
 import SalesReport from "@/components/Admin/SalesReport";
 const AdminHome = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex">
-      {/* Sidebar */}
-      <Sidebar />
+    <div className="min-h-screen flex">
       {/* Main Content */}
       <main className="flex-1 p-6">
         {/* Header */}
