@@ -2,12 +2,12 @@
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { FcGoogle } from "react-icons/fc";
-
+import { IoMdKey } from "react-icons/io";
 const AuthTabs = () => {
   const [activeTab, setActiveTab] = useState("login");
 
   return (
-    <div className="col-span-12 md:col-span-6 w-1/2 mx-auto border border-slate-500 rounded-lg  p-10">
+    <div className="col-span-12 md:col-span-6 w-[560px] mx-auto border border-slate-500 rounded-lg  p-10">
       <ul
         className="flex mb-4 mt-8 align-middle w-1/2"
         style={{ display: "flex", justifyContent: "center", width: "100%" }}
@@ -68,8 +68,8 @@ const AuthTabs = () => {
                   autoComplete="current-password"
                 />
               </div>
-              <div className="flex flex-col items justify-between">
-                <label className="flex items-center mb-4 !font-extralight">
+              <div className="flex flex-col items justify-between ">
+                <span className="w-full flex justify-between items-center mb-4"><label className="flex items-center text-[0.8rem] !font-normal">
                   <input
                     type="checkbox"
                     name="rememberme"
@@ -79,13 +79,20 @@ const AuthTabs = () => {
                   />
                   <span>Remember me</span>
                 </label>
+                <p className=" text-right">
+                <a href="#" className="text-blue-800 text-[0.8rem] !font-normal">
+                  forgot password?
+                </a>
+              </p>
+              </span>
                 <Button
                   type="submit"
                   className="p-4 w-full text-[1.2rem] bg-blue-500 text-white rounded"
                 >
                   Login
                 </Button>
-                <p className="text-center">or</p>
+                <p className="text-center my-3">or</p>
+                <span className="w-full flex gap-4 items-center justify-between mb-6">
                 <Button
                   type="submit"
                   className="p-4 w-full text-[0.9rem] bg-slate-700 text-white rounded"
@@ -93,12 +100,14 @@ const AuthTabs = () => {
                   continue with google{" "}
                   <FcGoogle className="ml-2 text-[1.2rem] bg-white rounded-full" />
                 </Button>
+                <Button
+                  type="submit"
+                  className="p-4 w-full text-[0.9rem] bg-slate-700 text-white rounded "
+                >
+                  Login Key <IoMdKey className="ml-2 text-[1.2rem] text-white" />
+                </Button></span>
               </div>
-              <p className="mt-4 text-right">
-                <a href="#" className="text-blue-800 !font-extralight">
-                  forgot password?
-                </a>
-              </p>
+             
             </form>
           </div>
         )}
