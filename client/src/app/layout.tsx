@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/toaster";
 import { ReduxProvider } from "@/redux/provider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}> 
       <ReduxProvider>
+      <Toaster />
         {children}
         </ReduxProvider>
         </body>
