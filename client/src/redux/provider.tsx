@@ -7,7 +7,7 @@ import { Persistor } from "redux-persist/lib/types";
 import {persistor} from "./store"
 interface ReduxProviderProps {
   children: React.ReactNode;
-  persistor:Persistor
+  
 }
 
 export function ReduxProvider({ children }: ReduxProviderProps) {
