@@ -10,6 +10,7 @@ import Tabs from "@/components/Home/Tabs";
 import TopProducts from "@/components/Home/TopProducts";
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import React from "react";
+import Head from "next/head";
 
 type Props = {};
 
@@ -36,4 +37,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page
+export default page;
