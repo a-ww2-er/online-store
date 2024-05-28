@@ -1,24 +1,45 @@
-
 import {
   configureStore,
   combineReducers,
+
 } from "@reduxjs/toolkit";
-
+import {
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  persistReducer,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import { apiSlice } from "./features/api/apiSlice";
+import authSlice from "./features/auth/authSlice";
 
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
+const rootReducer = combineReducers({
+  auth: authSlice,
+});
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: { 
+    persistedReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
-    // auth: authSlice,
+    
   },
   devTools: false,
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }).concat(apiSlice.middleware),
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoreActions: true,
+    },
+  }).concat(apiSlice.middleware),
 });
 
 //call the refresh token function on every page load
@@ -33,6 +54,8 @@ const initializeApp = async () => {
 };
 
 initializeApp();
+
+export const persistor = persistStore(store);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
