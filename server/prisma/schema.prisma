@@ -26,6 +26,8 @@ model User{
     name String
     email String @unique
     password String
+    profilePhoto String?
+
     mobileNumber Int?
     role Role @default(USER)
     createdAt DateTime @default(now())
@@ -34,9 +36,15 @@ model User{
     @@map("users")
 }
 
+
+  //put a default image for the image later
 model Product{
   id String @id @default(uuid())
   name String 
+  image String?
+  image2 String?
+  image3 String?
+  image4 String?
   description String @db.Text
   price Decimal
   previousPrice Decimal

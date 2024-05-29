@@ -49,18 +49,15 @@ export const updateProduct = async (req: Request, res: Response) => {
 
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
-    const product = req.body;
-    if (product.tags) {
-      product.tags = product.tags.join(",");
-    }
-
-    const updatedProduct = {};
-    //await prismaClient.product.delete()
+    await prismaClient.product.delete({
+      where: {
+        id: req.params.id,
+      },
+    });
 
     res.status(200).json({
-      success: true,
+      sucess: true,
       message: "Product Deleted",
-      updatedProduct,
     });
   } catch (error) {
     throw new NotFoundException(
@@ -70,23 +67,70 @@ export const deleteProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const listProduct = async (req: Request, res: Response) => {    
-    try {
-      const products = await prismaClient.product.findMany()
-      console.log(products)
-      res.status(200).json({
-        success: true,
-        message: "Product List",
-        data: products,
-      });
-    } catch (error) {
-      throw new NotFoundException(
-        "Product Not Found",
-        ErrorCode.PRODUCT_NOT_FOUND
-      );
-    }
+export const listProduct = async (req: Request, res: Response) => {
+  //TO SEND A SPECIFIC AMOUNT OF PRODUCTS BACK ELSE RETURN FIRST 5
+  if (req.query.skip) {
+    const count = await prismaClient.product.count();
+    const products = await prismaClient.product.findMany({
+      skip: +req?.query?.skip,
+      take: 5,
+    });
+
+    res.status(200).json({
+      sucess: true,
+      data: products,
+      count,
+    });
+  } else {
+    const count = await prismaClient.product.count();
+    const products = await prismaClient.product.findMany({
+      take: 5,
+    });
+
+    res.status(200).json({
+      sucess: true,
+      data: products,
+      count,
+    });
+  }
 };
 
-export const getProductById = async (req: Request, res: Response) => {};
+export const getProductById = async (req: Request, res: Response) => {
+  try {
+    const product = await prismaClient.product.findFirstOrThrow({
+      where: {
+        id: req.params.id,
+      },
+    });
 
-export const getProductByCategory = async (req: Request, res: Response) => {};
+    res.status(200).json({
+      sucess: true,
+      data: product,
+    });
+  } catch (error) {
+    throw new NotFoundException(
+      "Product Not Found",
+      ErrorCode.PRODUCT_NOT_FOUND
+    );
+  }
+};
+
+export const getProductByCartegory = async (req: Request, res: Response) => {
+  try {
+    const product = await prismaClient.product.findMany({
+      where: {
+        category: req.params.category,
+      },
+    });
+
+    res.status(200).json({
+      sucess: true,
+      data: product,
+    });
+  } catch (error) {
+    throw new NotFoundException(
+      "Product Not Found",
+      ErrorCode.PRODUCT_NOT_FOUND
+    );
+  }
+};
