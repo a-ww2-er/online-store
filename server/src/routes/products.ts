@@ -1,22 +1,41 @@
-import {Router} from 'express';
-import { createProduct, deleteProduct, getProductByCartegory, getProductById, listProduct, updateProduct } from '../controllers/products';
-import { errorHandler } from '../errorhandler';
-import adminMiddleware from '../middlewares/adminMiddleware';
-import authMiddleware from '../middlewares/authMiddleware';
-import { imageUpload } from '../middlewares/imageUploadMiddleware';
+import { Router } from "express";
+import {
+  createProduct,
+  deleteProduct,
+  getProductByCategory,
+  getProductById,
+  listProduct,
+  updateProduct,
+} from "../controllers/products";
+import { errorHandler } from "../errorhandler";
+import adminMiddleware from "../middlewares/adminMiddleware";
+import authMiddleware from "../middlewares/authMiddleware";
+import { imageUpload } from "../middlewares/imageUploadMiddleware";
 
-const productsRoutes:Router = Router()
+const productsRoutes: Router = Router();
 
-productsRoutes.post('/',[imageUpload.single('image')],errorHandler(createProduct))
+productsRoutes.post(
+  "/",
+  [imageUpload.single("image")],
+  errorHandler(createProduct)
+);
 
-productsRoutes.get('/',errorHandler(listProduct))
+productsRoutes.get("/", errorHandler(listProduct));
 
-productsRoutes.get('/category',errorHandler(getProductByCartegory))
+productsRoutes.get("/category", errorHandler(getProductByCategory));
 
-productsRoutes.put('/:id',[authMiddleware,adminMiddleware],errorHandler(updateProduct))
+productsRoutes.put(
+  "/:id",
+  [authMiddleware, adminMiddleware],
+  errorHandler(updateProduct)
+);
 
-productsRoutes.delete('/:id',[authMiddleware,adminMiddleware],errorHandler(deleteProduct))
+productsRoutes.delete(
+  "/:id",
+  [authMiddleware, adminMiddleware],
+  errorHandler(deleteProduct)
+);
 
-productsRoutes.get('/:id',errorHandler(getProductById))
+productsRoutes.get("/:id", errorHandler(getProductById));
 
-export default productsRoutes
+export default productsRoutes;

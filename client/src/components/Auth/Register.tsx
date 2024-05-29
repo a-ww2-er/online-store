@@ -156,7 +156,6 @@ const Register = (props: Props) => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col items-start w-full mb-4 ">
-                   
                     <FormLabel
                       htmlFor="password"
                       className="text-left flex justify-between w-full"

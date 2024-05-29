@@ -19,7 +19,6 @@ const page = (props: Props) => {
     <>
     <title>Home | One Faster</title>
     <div className="relative text-white bg-gradient-to-t from-gray-800 to-gray-900 w-full h-fit">
-     
         <Header />
         <Navbar />
         <Tabs />
