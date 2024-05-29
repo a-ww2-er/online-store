@@ -9,17 +9,18 @@ import { registerSchema } from "./schema/users";
 //DATABASE INITIALIZATION
 export const prismaClient = new PrismaClient({
   log: ["query"],
-}).$extends({
-  query: {
-    //WHEN CREATING USER VALIDATE INPUTS WITH REGISTER SCHEMA
-    user: {
-      create({ args, query }) {
-        args.data = registerSchema.parse(args.data);
-        return query(args);
-      },
-    },
-  },
-});
+})
+// .$extends({
+//   query: {
+//     //WHEN CREATING USER VALIDATE INPUTS WITH REGISTER SCHEMA
+//     user: {
+//       create({ args, query }) {
+//         args.data = registerSchema.parse(args.data);
+//         return query(args);
+//       },
+//     },
+//   },
+// });
 
 app.listen(PORT, () => {
   console.log(`Server running on PORT ${PORT}`);

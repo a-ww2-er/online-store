@@ -1,9 +1,19 @@
+import { persistor } from "@/redux/store";
 import { createSlice } from "@reduxjs/toolkit";
+import {User} from '../../../app/types'
 
-const initialState = {
+//send request with authoization header include the token there and revalidate on page reload
+
+type authSlice = {
+  token : string,
+  newUser:boolean,
+  user: User | null
+}
+
+const initialState: authSlice = {
   token: "",
-  user: "",
-  newUser:false,
+  user:null ,
+  newUser: false,
 };
 
 const authSlice = createSlice({
@@ -21,7 +31,8 @@ const authSlice = createSlice({
     },
     userLoggedOut: (state) => {
       state.token = "";
-      state.user = "";
+      state.user = null;
+      persistor.purge();
     },
   },
 });
@@ -29,4 +40,4 @@ const authSlice = createSlice({
 export const { userRegistration, userLoggedOut, userLoggedIn } =
   authSlice.actions;
 
-  export default authSlice.reducer
+export default authSlice.reducer;

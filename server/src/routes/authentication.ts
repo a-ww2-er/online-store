@@ -1,9 +1,15 @@
 import { Router } from "express";
-import { login, register } from "../controllers/authentication";
+import { login, profile, register,logout } from "../controllers/authentication";
+import { errorHandler } from "../errorhandler";
 
-const authRoutes:Router = Router();
+const authRoutes: Router = Router();
 
-authRoutes.post('/login',login)
-authRoutes.post('/register',register)
+authRoutes.post("/login", errorHandler(login));
 
-export default authRoutes
+authRoutes.post("/register", errorHandler(register));
+
+authRoutes.get("/profile", errorHandler(profile));
+
+authRoutes.get("/logout", errorHandler(logout));
+
+export default authRoutes;

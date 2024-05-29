@@ -1,141 +1,48 @@
 import React from "react";
-import Image from "next/image";
-// import {
-//   CloudLightningIcon,
-//   SquareGanttChartIcon,
-//   ShoppingCart,
-//   TagIcon,
-//   PersonStanding,
-//   BarChart,
-//   PinIcon,
-//   CurrencyIcon,
-//   StoreIcon,
-//   ShoppingBagIcon,
-// } from "lucide-react";
-import Sidebar from "@/components/Admin/SideBar";
-import Header from "@/components/Admin/Header"
+import { BoxIcon, BookCheck, MedalIcon } from "lucide-react";
+import Header from "@/components/Admin/Header";
+import { FcCancel } from "react-icons/fc";
+import SalesReport from "@/components/Admin/SalesReport";
 const AdminHome = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex">
-      {/* Sidebar */}
-      {/* <aside className="w-64 bg-lightGray shadow-md px-5 h-full">
-        <section id="logo" className="mt-10">
-          <h2 className="capitalize font-bold text-[1.5rem] flex gap-2 items-center">
-            <CloudLightningIcon className="text-blue-500 h-12 w-12" />
-            ONE FASTER
-          </h2>
-        </section>
-        <nav className="mt-8">
-          <ul>
-            <li className="p-4 bg-gray-200 rounded-lg mb-2 flex items-center border-2 gap-2">
-              <SquareGanttChartIcon /> Overview
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <ShoppingCart /> Orders
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <TagIcon /> Products
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <PersonStanding /> Customer
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <BarChart /> Analytics
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <PinIcon /> Marketing
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <CurrencyIcon /> Discount
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <StoreIcon /> Online Store
-            </li>
-            <li className="p-4 rounded-lg mb-2 flex items-center gap-2">
-              <ShoppingBagIcon /> Point of Sale
-            </li>
-          </ul>
-        </nav>
-      </aside> */}
-      <Sidebar/>
-
+    <div className="min-h-screen flex">
       {/* Main Content */}
       <main className="flex-1 p-6">
         {/* Header */}
-        {/* <header className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-2xl font-bold">Good Morning, Jonathan!</h1>
-            <p>{"Here's what's happening with your store today"}</p>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="relative">
-              <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
-                7
-              </span>
-              <i className="fas fa-bell text-xl"></i>
-            </div>
-            <Image
-              src="/img2.png"
-              alt="Profile"
-              className="w-10 h-10 rounded-full"
-              loading="lazy"
-              decoding="async"
-              width="244"
-              height="150"
-              // className="w-36 h-auto"
-            />
-          </div>
-        </header> */}
-        <Header/>
-
+        <Header />
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white p-6 rounded-lg shadow">
+            <BoxIcon />
             <h3 className="text-lg font-semibold">Total products</h3>
             <p className="text-2xl font-bold">
               250 <span className="text-green-500 text-sm">+2.5%</span>
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
+            <BookCheck />
             <h3 className="text-lg font-semibold">Completed orders</h3>
             <p className="text-2xl font-bold">
               124 <span className="text-green-500 text-sm">+2.5%</span>
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
+            <FcCancel size={20} />
             <h3 className="text-lg font-semibold">Canceled orders</h3>
             <p className="text-2xl font-bold">
               14 <span className="text-red-500 text-sm">-1.5%</span>
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
+            <MedalIcon />
             <h3 className="text-lg font-semibold">Top products</h3>
             <p className="text-2xl font-bold">
               119 <span className="text-green-500 text-sm">+2.5%</span>
             </p>
           </div>
         </div>
-
         {/* Sales Report */}
-        <div className="bg-white p-6 rounded-lg shadow mb-8 flex justify-between">
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Your sales report</h2>
-            <p className="text-4xl font-bold">$4,435.70</p>
-            <p className="text-green-500">+2,330.00 (+2.5%)</p>
-          </div>
-          {/* Sales chart placeholder */}
-          <div className="mt-4">
-            <Image
-              src="/img1.png"
-              alt="Sales Chart"
-              loading="lazy"
-              decoding="async"
-              width="244"
-              height="150"
-            />
-          </div>
-        </div>
-
+        <SalesReport />
         {/* Last Transactions */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h2 className="text-xl font-semibold mb-4">Last transactions</h2>

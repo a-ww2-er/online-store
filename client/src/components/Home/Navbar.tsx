@@ -9,6 +9,8 @@ import {
 import { Button } from "../ui/button";
 import { GoHistory } from "react-icons/go";
 import Link from "next/link";
+import { UserProfile } from "./UserProfile";
+import useAuth from "@/app/customHooks/useAuth";
 
 type Props = {};
 
@@ -23,6 +25,9 @@ const Navbar = (props: Props) => {
       }
     });
   }
+
+  const isAuthenticated = useAuth()?.user;
+
   return (
     <div
       className={`${
@@ -37,10 +42,10 @@ const Navbar = (props: Props) => {
         }
       >
         <section id="logo">
-          <h1 className="capitalize font-bold text-[1.5rem] flex gap-2 items-center">
+          <Link href="/" className="capitalize font-bold text-[1.5rem] flex gap-2 items-center">
             <CloudLightningIcon className="text-blue-500 h-12 w-12" />
             ONE FASTER
-          </h1>
+          </Link >
         </section>
         <section id="search">
           <span className="flex rounded-full gap-2 bg-white text-black p-4 py-2 w-[440px]">
@@ -54,20 +59,23 @@ const Navbar = (props: Props) => {
         </section>
         {/* <section id="cart_and_profile"><UserCircle2Icon className="text-blue-700"/></section> */}
         <section id="cart_and_profile" className="flex gap-4 items-center">
-          <Link href="./cart" className="relative cursor-pointer">
+         
+          <span className="flex items-center text-[0.85rem] pt-1 cursor-pointer">
+            <GoHistory className="mr-2 h-5 w-5" /> Recent
+          </span ><Link href="./cart" className="relative cursor-pointer">
             <ShoppingCartIcon className="text-white h-6 w-6 relative" />
             <p className="absolute bg-blue-600 rounded-[50%] text-[0.8rem] p-1 h-fit py-0 w-fit top-[-8px] right-[-8px]">
               0
             </p>
           </Link>
-          <Button variant="link">
+          {!isAuthenticated ? 
+          <Button variant="link" className="pl-2">
             <Link className="text-white" href="/auth">
               Sign In
             </Link>{" "}
-          </Button>{" "}
-          <span className="flex items-center text-[0.85rem] pt-1 cursor-pointer">
-            <GoHistory className="mr-2 h-5 w-5" /> Recent
-          </span>
+          </Button> : 
+          <UserProfile/>
+          }
         </section>
       </div>
     </div>

@@ -10,6 +10,7 @@ import Tabs from "@/components/Home/Tabs";
 import TopProducts from "@/components/Home/TopProducts";
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import React from "react";
+import Head from "next/head";
 
 type Props = {};
 
@@ -18,7 +19,6 @@ const page = (props: Props) => {
     <>
     <title>Home | One Faster</title>
     <div className="relative text-white bg-gradient-to-t from-gray-800 to-gray-900 w-full h-fit">
-     
         <Header />
         <Navbar />
         <Tabs />
@@ -36,4 +36,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page
+export default page;
