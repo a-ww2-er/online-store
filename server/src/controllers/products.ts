@@ -27,7 +27,6 @@ export const updateProduct = async (req: Request, res: Response) => {
     if (product.tags) {
       product.tags = product.tags.join(",");
     }
-
     const updatedProduct = await prismaClient.product.update({
       where: {
         id: req.params.id,
