@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { createProduct, deleteProduct, getProductByCartegory, getProductById, listProduct, updateProduct } from '../controllers/products';
+import { createProduct, deleteProduct, getProductByCartegory, getProductById, getProductsByQuery, listProduct, updateProduct } from '../controllers/products';
 import { errorHandler } from '../errorhandler';
 import adminMiddleware from '../middlewares/adminMiddleware';
 import authMiddleware from '../middlewares/authMiddleware';
@@ -10,6 +10,8 @@ const productsRoutes:Router = Router()
 productsRoutes.post('/',[imageUpload.single('image')],errorHandler(createProduct))
 
 productsRoutes.get('/',errorHandler(listProduct))
+
+productsRoutes.get('/search-products',errorHandler(getProductsByQuery))
 
 productsRoutes.get('/category',errorHandler(getProductByCartegory))
 

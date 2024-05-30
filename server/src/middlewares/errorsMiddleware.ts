@@ -3,7 +3,7 @@ import { HttpException } from "../exceptions/root";
 
 //BASE ERROR HANDLER MIDDLEWARE
 export const errorMiddleware = (error:HttpException,_req:Request,res:Response,next:NextFunction)=>{
-    res.status(error.statusCode).json({
+    res.status(error.statusCode || 500).json({
         success:false,
         message:error.message,
         errorCode:error.errorCode,

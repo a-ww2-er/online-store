@@ -1,5 +1,5 @@
 import Header from "@/components/Home/Header";
-import Navbar from "@/components/Home/Navbar";
+import Navbar from "@/components/Home/Navbar/Navbar";
 import Tabs from "@/components/Home/Tabs";
 import AllProducts from "@/components/Store/AllProducts";
 import StoreFilterNav from "@/components/Store/StoreFilterNav";

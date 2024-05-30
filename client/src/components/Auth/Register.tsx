@@ -82,7 +82,7 @@ const Register = (props: Props) => {
       </span>
             <FormField
               control={form.control}
-              name="name"
+              name={"name" as never}
               render={({ field }) => {
                 return (
                   <>
@@ -104,7 +104,7 @@ const Register = (props: Props) => {
             />
              <FormField
               control={form.control}
-              name="email"
+              name={"email" as never}
               render={({ field }) => {
                 return (
                   <>
@@ -126,7 +126,7 @@ const Register = (props: Props) => {
             />
             <FormField
               control={form.control}
-              name="mobileNumber"
+              name={"mobileNumber" as never}
               render={({ field }) => {
                 return (
                   <>
@@ -152,7 +152,7 @@ const Register = (props: Props) => {
             />
             <FormField
               control={form.control}
-              name={"password"}
+              name={"password" as never}
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col items-start w-full mb-4 ">
@@ -217,37 +217,7 @@ const Register = (props: Props) => {
                   <p>Continue with google</p>
                   <BsGoogle className="text-[1rem] text-white" />
                 </Button></span>
-      {/* <div className="form-group">
-        <input
-          type="email"
-          className="w-full p-2 border border-gray-300 rounded"
-          name="email"
-          id="reg_email"
-          placeholder="Email address"
-          autoComplete="email"
-        />
-      </div>
-      <div className="form-group">
-        <input
-          type="password"
-          className="w-full p-2 border border-gray-300 rounded"
-          name="password"
-          id="reg_password"
-          placeholder="Password"
-          autoComplete="new-password"
-        />
-      </div>
-      <div className="form-group">
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded"
-        >
-          Register
-        </button>
-      </div>
-     
-    </form>
-  </div> */}
+
    <div className="text-sm text-gray-500 text-center">
         Your personal data will be used to support your experience
         throughout this website in accordance with our{" "}

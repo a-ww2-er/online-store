@@ -5,6 +5,7 @@ import img4 from "../../../public/img4.png";
 import img6 from "../../../public/img3.png";
 import { DropdownMenuSeparator } from "../ui/dropdown-menu";
 import { IoCart, IoCartOutline, IoCartSharp } from "react-icons/io5";
+import Link from "next/link";
 
 type Props = {
   title: string;
@@ -14,7 +15,7 @@ type Props = {
 
 const Cards = (props: Props) => {
   return (
-    <div className="flex flex-col min-h-[360px] rounded-md border border-slate-400 shadow-sm ">
+    <Link href="/store/product" className="flex flex-col min-h-[360px] rounded-md border border-slate-400 shadow-sm ">
       <section id="product_image" className="">
         <Image
           src={props.img == 4 ? img4 : props.img == 6 ? img6 : img5}
@@ -27,9 +28,9 @@ const Cards = (props: Props) => {
         {" "}
         <h2 className="font-medium text-[0.9rem]">{props.title}</h2>
         <DropdownMenuSeparator className=" bg-slate-400"/>
-       <span className="flex gap-2 items-center flex-no-wrap w-full justify-between"><span><p className="text-gray-400 line-through">$ {props.price + 154}</p> <p className="text-blue-700 text-[1.1rem] font-medium">$ {props.price}</p></span>  <IoCartOutline className="h-6 w-6"/></span>
+       <span className="flex gap-2 items-center flex-no-wrap w-full justify-between"><span><p className="text-gray-400 line-through">$ {props.price + 154}</p> <p className="text-green-600 text-[1.1rem] font-medium">$ {props.price}</p></span>  <IoCartOutline className="h-6 w-6"/></span>
       </section>
-    </div>
+    </Link>
   );
 };
 

@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE `products` ADD COLUMN `image` VARCHAR(191) NULL,
+    ADD COLUMN `image2` VARCHAR(191) NULL,
+    ADD COLUMN `image3` VARCHAR(191) NULL,
+    ADD COLUMN `image4` VARCHAR(191) NULL;
+
+-- AlterTable
+ALTER TABLE `users` ADD COLUMN `profilePhoto` VARCHAR(191) NULL;

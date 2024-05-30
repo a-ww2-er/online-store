@@ -24,14 +24,14 @@ const SlideShow = (props: Props) => {
     //  <p>* Include access to all windows 11 functions <br /> * 100% guaranteed sucessful installation <br /> * Live Installation Support Avaliable </p>
     //   <Button className="bg-blue-600 px-6 py-4 text-[1.1rem] font-medium rounded-lg">Shop Now</Button>
     //   </section>
+   // style={{
+    //  '--swiper-navigation-color': '#fff',
+      //'--swiper-pagination-color': '#fff',
+    //}}
     //   <section id="right" className='justify-self-end'><Image src={img1} className="" alt="img"/></section>
     // </div>
     <>
      <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-        }}
         speed={1200}
         parallax={true}
         pagination={{

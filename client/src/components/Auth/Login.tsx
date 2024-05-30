@@ -94,7 +94,7 @@ const Login = (props: Props) => {
             </span>
             <FormField
               control={form.control}
-              name="email"
+              name={"email" as never}
               render={({ field }) => {
                 return (
                   <>
@@ -116,7 +116,7 @@ const Login = (props: Props) => {
             />
             <FormField
               control={form.control}
-              name={"password"}
+              name= {"password" as never}
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col items-start w-full mb-4 ">

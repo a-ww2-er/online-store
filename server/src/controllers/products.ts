@@ -1,19 +1,23 @@
 import { Request, Response } from "express";
 import { prismaClient } from "..";
+import { BadRequestException } from "../exceptions/bad-request";
+import { InternalException } from "../exceptions/internal-exception";
 import { NotFoundException } from "../exceptions/not-found";
 import { ErrorCode } from "../exceptions/root";
 import { productsSchema } from "../schema/products";
 
 export const createProduct = async (req: Request, res: Response) => {
+  //COMMENT OUTS TAGS(LINE17) AND THIS PRODUCTS.SCHEMA.PARSE IF YOU WANT TO CREATE PRODUCT FROM POSTMAN
   productsSchema.parse(req.body);
-  console.log(req.body, req.file);
+
   const product = await prismaClient.product.create({
     data: {
       ...req.body,
+      image: req.file?.filename,
       tags: req.body.tags.join(","),
     },
   });
-  console.log(req.file);
+
   res.status(200).json({
     sucess: true,
     message: "Product Created",
@@ -132,6 +136,66 @@ export const getProductByCartegory = async (req: Request, res: Response) => {
     throw new NotFoundException(
       "Product Not Found",
       ErrorCode.PRODUCT_NOT_FOUND
+    );
+  }
+};
+
+export const getProductsByQuery = async (req: Request, res: Response) => {
+  try {
+    const searchQuery = req.query.query;
+
+    if (typeof searchQuery === "string") {
+      const products = await prismaClient.product.findMany({
+        take: 4,
+        where: {
+          OR: [
+            {
+              category: {
+                contains: searchQuery,
+              },
+            },
+            {
+              name: {
+                contains: searchQuery,
+              },
+            },
+          ],
+        },
+        
+      });
+
+      //SORTS BASED ON PRODUCT NAME ACCURACY TO SEARCH QUERY
+      const sortedProducts = products.sort((a, b) => {
+        const aContains = a.name.includes(searchQuery);
+        const bContains = b.name.includes(searchQuery);
+        
+        if (aContains && !bContains) return -1;
+        if (!aContains && bContains) return 1;
+        return 0;
+      })
+      if (sortedProducts.length > 0) {
+        res.status(200).json({
+          sucess: true,
+          data: sortedProducts,
+        });
+      } else {
+        throw new NotFoundException(
+          "No Product Not Found",
+          ErrorCode.PRODUCT_NOT_FOUND
+        );
+      }
+    } else {
+      throw new BadRequestException(
+        "Invalid search query",
+        ErrorCode.INVALID_QUERY
+      );
+    }
+  } catch (error) {
+    console.log(error)
+    throw new InternalException(
+      "Server Error",
+      error,
+      ErrorCode.INTERNAL_EXCEPTION
     );
   }
 };
