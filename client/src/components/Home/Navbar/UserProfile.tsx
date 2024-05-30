@@ -43,6 +43,7 @@ import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAppSelector ,useAppDispatch} from "@/redux/hooks";
 import { userLoggedOut } from "@/redux/features/auth/authSlice";
+import { persistor } from "@/redux/store";
 
 // <Avatar className="rounded-full p-4 h-8 w-8 border border-secondary-color">  <AvatarFallback> pfp</AvatarFallback>
 export function UserProfile() {
@@ -56,6 +57,7 @@ export function UserProfile() {
  function onLogout() {
     // setLogout(true);
     dispatch(userLoggedOut());
+    persistor.purge();
     // await signOut();
     router.push("/")
   }

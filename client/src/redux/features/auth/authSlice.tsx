@@ -33,7 +33,7 @@ const authSlice = createSlice({
       state.token = "";
       state.user = null;
       console.log("removing state")
-      persistor.purge();
+    
     },
   },
 });
