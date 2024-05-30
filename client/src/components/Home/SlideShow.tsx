@@ -4,7 +4,7 @@ import img1 from "../../../public/img1.png"
 import img2 from "../../../public/img2.png"
 import img3 from "../../../public/img3.png"
 import { Button } from '../ui/button'
-import React, { useRef, useState } from 'react';
+import React, { CSSProperties, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -32,6 +32,10 @@ const SlideShow = (props: Props) => {
     // </div>
     <>
      <Swiper
+      style={{
+     '--swiper-navigation-color': '#fff',
+      '--swiper-pagination-color': '#fff',
+    } as CSSProperties}
         speed={1200}
         parallax={true}
         pagination={{

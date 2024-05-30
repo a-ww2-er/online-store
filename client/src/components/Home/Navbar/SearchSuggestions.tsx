@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useEffect ,useState} from "react";
 import { ClipLoader } from "react-spinners";
 import {SearchIcon} from 'lucide-react'
+import img2 from "../../../../public/img2.png"
 
 type Props = {
   query?: string;
@@ -51,7 +52,8 @@ const SearchSuggestions = ({ query }: Props) => {
                        
                         <p className="text-[0.8rem] font-light line-clamp-1">{prod.description}</p>
                         <p className="text-[0.8rem] font-light line-clamp-1 mt-1"> Category: <span className=" p-3 bg-blue-200 text-blue-400 rounded-md">{prod.category}</span></p></span>
-                    <Image alt="img" src={`http://localhost:8000/public/images/${prod?.image}`} className="h-[100px] w-[100px] object-cover " width={100} height={100}/>
+                    {/* <Image alt="img" src={`http://localhost:8000/public/images/${prod?.image}`} className="h-[100px] w-[100px] object-cover " width={100} height={100}/> */}
+                    <Image alt="img" src={img2} className="h-[100px] w-[100px] object-cover " width={100} height={100}/>
                 </Link>
             )
         }) : "No results"}</div>

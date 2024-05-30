@@ -41,18 +41,21 @@ import Image from "next/image";
 import { AiOutlineUser } from "react-icons/ai";
 import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppSelector ,useAppDispatch} from "@/redux/hooks";
+import { userLoggedOut } from "@/redux/features/auth/authSlice";
 
 // <Avatar className="rounded-full p-4 h-8 w-8 border border-secondary-color">  <AvatarFallback> pfp</AvatarFallback>
 export function UserProfile() {
   const router = useRouter()
+  const dispatch = useAppDispatch()
   const user = useAppSelector((state) => state.persistedReducer.auth.user);
   const [logout, setLogout] = useState(false);
   const {} = useLogoutQuery(undefined, {
     skip: !logout ? true : false,
   });
-  async function onLogout() {
-    setLogout(true);
+ function onLogout() {
+    // setLogout(true);
+    dispatch(userLoggedOut());
     // await signOut();
     router.push("/")
   }
