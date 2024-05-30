@@ -21,23 +21,6 @@ const page = () => {
         </section>
         <section className="flex w-full my-10">
           <AuthTabs />
-          {/* <span className="relative text-white bg-gradient-to-t from-gray-800 to-gray-900 w-full h-screen">
-            <Image
-              src={img1}
-              className="absolute h-[240px] w-[240px]"
-              alt="login_image"
-            />
-            <Image
-              src={img2}
-              className="absolute h-[240px] w-[240px]"
-              alt="login_image"
-            />
-            <Image
-              src={img4}
-              className="absolute h-[240px] w-[240px]"
-              alt="login_image"
-            />
-          </span> */}
         </section>
         <Footer />
       </div>
