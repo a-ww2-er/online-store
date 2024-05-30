@@ -17,7 +17,7 @@ export const authApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
         //An endpoint definition that alters data on the server or will possibly invalidate the cache.
-        credentials: "include",
+        credentials: "include" as const,
       }),
     }),
     //This is for our activation of email requests
@@ -39,7 +39,7 @@ export const authApi = apiSlice.injectEndpoints({
           email: data.email,
           password: data.password,
         },
-        credentials: "include",
+        credentials: "include" as const,
       }),
       //we are making request to our server here and storing the response in the Slices reducers i.e slices actions
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
@@ -88,7 +88,7 @@ export const authApi = apiSlice.injectEndpoints({
       query: () => ({
         url: "auth/logout",
         method: "GET",
-        credentials: "include",
+        credentials: "include" as const,
       }),
       //we are making request to our server here and storing the response in the Slices reducers i.e slices actions
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {

@@ -1,16 +1,9 @@
-import { Router } from "express";
-import {
-  createProduct,
-  deleteProduct,
-  getProductByCategory,
-  getProductById,
-  listProduct,
-  updateProduct,
-} from "../controllers/products";
-import { errorHandler } from "../errorhandler";
-import adminMiddleware from "../middlewares/adminMiddleware";
-import authMiddleware from "../middlewares/authMiddleware";
-import { imageUpload } from "../middlewares/imageUploadMiddleware";
+import {Router} from 'express';
+import { createProduct, deleteProduct, getProductByCartegory, getProductById, getProductsByQuery, listProduct, updateProduct } from '../controllers/products';
+import { errorHandler } from '../errorhandler';
+import adminMiddleware from '../middlewares/adminMiddleware';
+import authMiddleware from '../middlewares/authMiddleware';
+import { imageUpload } from '../middlewares/imageUploadMiddleware';
 
 const productsRoutes: Router = Router();
 
@@ -20,7 +13,9 @@ productsRoutes.post(
   errorHandler(createProduct)
 );
 
-productsRoutes.get("/", errorHandler(listProduct));
+productsRoutes.get('/',errorHandler(listProduct))
+
+productsRoutes.get('/search-products',errorHandler(getProductsByQuery))
 
 productsRoutes.get("/category", errorHandler(getProductByCategory));
 

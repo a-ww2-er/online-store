@@ -6,11 +6,11 @@ export const storage = multer.diskStorage({
     destination: function (req, file, cb) {
        if(file.fieldname =="image")
        {
-        cb(null, path.join(__dirname, "../public/images"));
+        cb(null, path.join(__dirname, "../../public/images"));
     }
        if(file.fieldname =="profilePhoto")
        {
-        cb(null, path.join(__dirname, "../public/profilePhotos"));
+        cb(null, path.join(__dirname, "../../public/profilePhotos"));
     }
 },
     filename: function (req, file, cb) {

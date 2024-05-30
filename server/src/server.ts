@@ -15,10 +15,11 @@ const app: Express = express();
 app.set('trust proxy', true);
 
 
+
 // MIDDLEWARES
 app.use(cors({ origin: CORS_ORIGIN, credentials: true }));
 app.use(express.json())
-app.use('/public',express.static(path.join(__dirname,'public')))
+app.use('/public',express.static(path.join(__dirname,'../public')))
 
 // ROUTES
 app.use('/api',rootRouter)

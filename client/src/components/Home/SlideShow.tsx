@@ -4,7 +4,7 @@ import img1 from "../../../public/img1.png"
 import img2 from "../../../public/img2.png"
 import img3 from "../../../public/img3.png"
 import { Button } from '../ui/button'
-import React, { useRef, useState } from 'react';
+import React, { CSSProperties, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -24,14 +24,18 @@ const SlideShow = (props: Props) => {
     //  <p>* Include access to all windows 11 functions <br /> * 100% guaranteed sucessful installation <br /> * Live Installation Support Avaliable </p>
     //   <Button className="bg-blue-600 px-6 py-4 text-[1.1rem] font-medium rounded-lg">Shop Now</Button>
     //   </section>
+   // style={{
+    //  '--swiper-navigation-color': '#fff',
+      //'--swiper-pagination-color': '#fff',
+    //}}
     //   <section id="right" className='justify-self-end'><Image src={img1} className="" alt="img"/></section>
     // </div>
     <>
      <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-        }}
+      style={{
+     '--swiper-navigation-color': '#fff',
+      '--swiper-pagination-color': '#fff',
+    } as CSSProperties}
         speed={1200}
         parallax={true}
         pagination={{

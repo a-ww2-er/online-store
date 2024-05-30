@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "@/components/Home/Header";
-import Navbar from "@/components/Home/Navbar";
+import Navbar from "@/components/Home/Navbar/Navbar";
 import Tabs from "@/components/Home/Tabs";
-import Footer from "@/components/Home/Footer";
+import Footer from "@/components/Home/Footer/Footer";
 import AuthTabs from "@/components/Auth/authtabs";
 import Image from "next/image";
 import img2 from "../../../public/img3.png";
@@ -19,7 +19,7 @@ const page = () => {
           <Navbar />
           <Tabs />
         </section>
-        <section className="flex w-full mt-10">
+        <section className="flex w-full my-10">
           <AuthTabs />
           {/* <span className="relative text-white bg-gradient-to-t from-gray-800 to-gray-900 w-full h-screen">
             <Image

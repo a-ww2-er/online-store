@@ -6,11 +6,12 @@ import {
   ShoppingCartIcon,
   UserCircle2Icon,
 } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { GoHistory } from "react-icons/go";
 import Link from "next/link";
 import { UserProfile } from "./UserProfile";
 import useAuth from "@/app/customHooks/useAuth";
+import SearchBox from "./SearchBox";
 
 type Props = {};
 
@@ -48,14 +49,7 @@ const Navbar = (props: Props) => {
           </Link >
         </section>
         <section id="search">
-          <span className="flex rounded-full gap-2 bg-white text-black p-4 py-2 w-[440px]">
-            <SearchIcon />
-            <input
-              type="text"
-              placeholder="search products"
-              className="bg-transparent border-none outline-none focus:border-none focus:outline-none w-full"
-            />
-          </span>
+          <SearchBox/>
         </section>
         {/* <section id="cart_and_profile"><UserCircle2Icon className="text-blue-700"/></section> */}
         <section id="cart_and_profile" className="flex gap-4 items-center">

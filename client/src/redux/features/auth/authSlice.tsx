@@ -32,7 +32,8 @@ const authSlice = createSlice({
     userLoggedOut: (state) => {
       state.token = "";
       state.user = null;
-      persistor.purge();
+      console.log("removing state")
+    
     },
   },
 });
