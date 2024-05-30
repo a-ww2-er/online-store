@@ -115,7 +115,7 @@ export const getProductById = async (req: Request, res: Response) => {
   }
 };
 
-export const getProductByCartegory = async (req: Request, res: Response) => {
+export const getProductByCategory = async (req: Request, res: Response) => {
   try {
     const product = await prismaClient.product.findMany({
       where: {

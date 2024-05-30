@@ -17,21 +17,22 @@ type Props = {};
 const page = (props: Props) => {
   return (
     <>
-    <title>Home | One Faster</title>
-    <div className="relative text-white bg-gradient-to-t from-gray-800 to-gray-900 w-full h-fit">
+      <title>Home | One Faster</title>
+      <div className="relative text-white bg-gradient-to-t from-gray-800 to-gray-900 w-full h-fit">
         <Header />
         <Navbar />
         <Tabs />
-        <DropdownMenuSeparator className="w-full bg-slate-800 mt-3"/>
+        <DropdownMenuSeparator className="w-full bg-slate-800 mt-3" />
         <SlideShow />
-      <section id="hero" className="bg-white">
-         <Deals/>
-      <TopProducts />
-      <Advert />
-      <FeaturedProducts/>
-      <Banners /> 
-      <Footer/></section>
-    </div>
+        <section id="hero" className="bg-white">
+          <Deals />
+          <TopProducts />
+          <Advert />
+          <FeaturedProducts />
+          <Banners />
+          <Footer />
+        </section>
+      </div>
     </>
   );
 };
