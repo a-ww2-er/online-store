@@ -19,7 +19,7 @@ const page = () => {
           <Navbar />
           <Tabs />
         </section>
-        <section className="flex w-full mt-10">
+        <section className="flex w-full my-10">
           <AuthTabs />
           {/* <span className="relative text-white bg-gradient-to-t from-gray-800 to-gray-900 w-full h-screen">
             <Image
